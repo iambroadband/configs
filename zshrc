@@ -40,7 +40,6 @@ plugins=(
     docker
     fasd
     git
-    golang
     npm
     nvm
     poetry
@@ -79,8 +78,9 @@ export NVM_DIR="/home/broadband/.nvm"
 [ -s "/home/broadband/.nvm/bash_completion" ] && \. "/home/broadband/.nvm/bash_completion"
 
 # LS Alias Configuration
-alias ls="ls -1 --color=tty --group-directories-first"
-alias la="ls -A"
-alias ll="ls -lAhF"
+alias ls="ls -1 --color=tty --group-directories-first" # ls 1-per-line, in color, dirs first
+alias la="ls -A"     # ls all
+alias ll="ls -lAhF"  # ls long
+alias lm="ls | less" # ls minimal
 unalias l
 unalias lsa
