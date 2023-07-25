@@ -14,10 +14,6 @@
     // Font
     "terminal.integrated.fontFamily": "'Fira Code'",
     "terminal.integrated.fontSize": 11,
-    // Date/Time
-    // ...
-    // Colors
-    // ...
     // Terminal
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
@@ -61,7 +57,6 @@
         "**/*.pyc": true,
         "**/*.*.meta": true,
         "node_modules": true,
-        "**/*.rkt~": true
     },
     // For weird file extensions
     "files.associations": {
@@ -71,24 +66,16 @@
     "editor.quickSuggestions": {
         "other": true,
         "comments": false,
-        "strings": true
+        "strings": true,
     },
     // Extension-specific configs
     "[plaintext]": {
-        "editor.wordBasedSuggestions": false
+        "editor.wordBasedSuggestions": false,
     },
     // Snippets to top
     "editor.snippetSuggestions": "top",
-    // Turn off Emmet
-    "emmet.excludeLanguages": [
-        "markdown",
-        "javascript",
-        "jsx"
-    ],
+    // Theme
     "workbench.colorTheme": "Dracula",
-    // GitLens Preferences
-    "gitlens.blame.heatmap.enabled": false,
-    "gitlens.blame.avatars": false,
     // Latex Preferences
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
@@ -123,13 +110,7 @@
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "~/.local/bin/black",
     "python.sortImports.path": "~/.local/bin/isort",
-    "python.formatting.blackArgs": [
-        "--line-length=120"
-    ],
     "python.linting.enabled": true,
-    "python.sortImports.args": [
-        "--profile=black"
-    ],
     "[python]": {
         "editor.formatOnType": true,
         "editor.formatOnSave": true,
