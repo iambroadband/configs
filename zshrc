@@ -52,7 +52,6 @@ plugins=(
     web-search
     yarn
     zsh-autosuggestions
-    zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -70,17 +69,22 @@ export EDITOR="$VISUAL"
 # Set up Python
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 alias python="python3"
-alias poetry_shell='. "$(dirname $(poetry run which python))/activate"'
+alias acpoetry='. "$(dirname $(poetry run which python))/activate"'
 
 # Setup NVM
 export NVM_DIR="/home/broadband/.nvm"
 [ -s "/home/broadband/.nvm/nvm.sh" ] && \. "/home/broadband/.nvm/nvm.sh"
 [ -s "/home/broadband/.nvm/bash_completion" ] && \. "/home/broadband/.nvm/bash_completion"
 
-# LS Alias Configuration
-alias ls="ls -1 --color=tty --group-directories-first" # ls 1-per-line, in color, dirs first
-alias la="ls -A"     # ls all
+# ls minimal
+function le(){
+  ls "$@" | less
+}
+
+alias ls_default="ls --color=tty --group-directories-first"
+alias ls="ls_default" # ls 1-per-line, in color, dirs first
+alias la="ls -A"     # ls all (show hidden)
 alias ll="ls -lAhF"  # ls long
-alias lm="ls | less" # ls minimal
-unalias l
+alias lm="ls -1"
 unalias lsa
+unalias l
