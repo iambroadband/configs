@@ -66,22 +66,53 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # If you come from bash you might have to change your $PATH.
-# Set up Python
+## Set up Python
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 alias python="python3"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# poetry
 alias acpoetry='. "$(dirname $(poetry run which python))/activate"'
+
 
 # Setup NVM
 export NVM_DIR="/home/broadband/.nvm"
 [ -s "/home/broadband/.nvm/nvm.sh" ] && \. "/home/broadband/.nvm/nvm.sh"
 [ -s "/home/broadband/.nvm/bash_completion" ] && \. "/home/broadband/.nvm/bash_completion"
 
-# ls minimal
-function le(){
-  ls "$@" | less
+# LS Alias Configuration
+function auto-ls(){
+  unalias ls # no circles
+  maxcount=14
+
+  # Only a few items? 1 per line.
+  count=$(ls "$@" | wc -l)
+  if [ $count -ge $maxcount ]
+  then
+    # echo "$count more than $maxcount"
+    ls "$@"     # normal horizontal spread
+  else
+    # echo "$count less than $maxcount"
+    ls -1 "$@"  # 1 per line
+  fi
+
+  alias ls="ls_default"
+  unset count
+  unset maxcount
 }
 
-alias ls_default="ls --color=tty --group-directories-first"
+# ls minimal
+function le(){
+  ls "$@" # | less
+}
+
+alias ls_default="ls --color=tty --group-directories-first" # change the `ls` to `auto-ls` for limiting
 alias ls="ls_default" # ls 1-per-line, in color, dirs first
 alias la="ls -A"     # ls all (show hidden)
 alias ll="ls -lAhF"  # ls long
